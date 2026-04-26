@@ -1,0 +1,15 @@
+# OS
+.DS_Store
+
+# Hugo build output
+public/
+resources/_gen/
+.hugo_build.lock
+
+# Dependencies
+node_modules/
+
+# Env files
+.env
+.env.*
+!.env.example

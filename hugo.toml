@@ -1,0 +1,38 @@
+baseURL = "https://example.com/"
+languageCode = "en-us"
+title = "Ebike Media"
+theme = "github.com/CaiJimmy/hugo-theme-stack/v3"
+enableRobotsTXT = true
+
+[module]
+  [[module.imports]]
+    path = "github.com/CaiJimmy/hugo-theme-stack/v3"
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+
+[sitemap]
+  changefreq = "weekly"
+  filename = "sitemap.xml"
+  priority = 0.5
+
+[permalinks]
+  models = "/models/:slug/"
+  reviews = "/reviews/:slug/"
+  guides = "/guides/:slug/"
+  rankings = "/rankings/:slug/"
+  brands = "/brands/:slug/"
+
+[params]
+  mainSections = ["models", "reviews", "guides", "rankings", "brands"]
+
+[params.sidebar]
+  subtitle = "E-bike models, reviews, rankings, and guides"
+
+[params.article]
+  math = false
+  readingTime = true
+
+[params.footer]
+  since = 2026

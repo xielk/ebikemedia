@@ -1,0 +1,44 @@
+{{ define "main" }}
+    {{- $latest := first 10 (where .Site.RegularPages "Type" "in" .Site.Params.mainSections) -}}
+    {{- $featured := first 4 (where .Site.RegularPages "Params.featured" true) -}}
+
+    {{ if gt (len $featured) 0 }}
+        <section class="article-list">
+            <h2 class="section-title">Featured Content</h2>
+            {{ range $featured }}
+                {{ partial "article-list/default" . }}
+            {{ end }}
+        </section>
+    {{ end }}
+
+    <section class="article-list">
+        <h2 class="section-title">Latest Posts</h2>
+        {{ range $latest }}
+            {{ partial "article-list/default" . }}
+        {{ end }}
+    </section>
+
+    <section class="article-list">
+        <h2 class="section-title">Category Navigation</h2>
+        <article class="has-image">
+            <div class="article-details">
+                <ul class="article-subtitle" style="list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem;">
+                    {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
+                        <li>
+                            <a href="{{ (printf "/categories/%s/" ($name | urlize)) | relLangURL }}">{{ $name }}</a>
+                            <span>({{ len $taxonomy }})</span>
+                        </li>
+                    {{ else }}
+                        <li>No categories yet.</li>
+                    {{ end }}
+                </ul>
+            </div>
+        </article>
+    </section>
+
+    {{- partial "footer/footer" . -}}
+{{ end }}
+
+{{ define "right-sidebar" }}
+    {{ partial "sidebar/right.html" (dict "Context" . "Scope" "homepage") }}
+{{ end }}
