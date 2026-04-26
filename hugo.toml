@@ -1,4 +1,4 @@
-baseURL = "https://example.com/"
+baseURL = "https://www.ebikemedia.com/"
 languageCode = "en-us"
 title = "Ebike Media"
 theme = "github.com/CaiJimmy/hugo-theme-stack/v3"
